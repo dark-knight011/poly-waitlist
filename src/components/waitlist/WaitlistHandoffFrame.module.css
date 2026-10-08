@@ -1,0 +1,91 @@
+.scene[data-scene="handoff"] {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  align-items: stretch;
+  justify-items: stretch;
+  align-content: stretch;
+  justify-content: normal;
+  width: 100%;
+  min-width: 0;
+  min-height: 560px;
+  padding: 0;
+  overflow: visible;
+}
+
+.toolbar {
+  position: relative;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  padding: 4px 16px 12px;
+  color: var(--muted);
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+}
+
+.previewLabel, .note {
+  margin: 0;
+  font-size: inherit;
+  font-weight: 400;
+}
+
+.poseButtons { display: flex; gap: 5px; }
+
+.poseButtons button {
+  padding: 7px 10px;
+  border: 1px solid var(--paper-border);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+
+.poseButtons button[aria-pressed="true"] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.poseButtons button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.board {
+  position: relative;
+  z-index: 5;
+  min-width: 0;
+  min-height: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.receiverLayer { position: absolute; }
+.receiverRear { z-index: 1; }
+.receiverFront { z-index: 3; }
+
+.scene .paper {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+.previewInput { color: var(--muted); }
+
+@media (min-width: 901px) and (min-height: 600px) {
+  .scene[data-scene="handoff"] { min-height: 0; }
+}
+
+@media (max-width: 540px) {
+  .toolbar { gap: 8px; }
+  .previewLabel { flex-basis: 100%; text-align: center; }
+  .note { flex-basis: 100%; text-align: center; }
+  .poseButtons button { min-height: 40px; }
+}

@@ -1,0 +1,99 @@
+/* Only the final scene lives here. All page chrome comes from WaitlistShell. */
+.scene[data-scene="final"] {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  align-items: stretch;
+  justify-items: stretch;
+  align-content: stretch;
+  justify-content: normal;
+  width: 100%;
+  min-width: 0;
+  min-height: 480px;
+  padding: 8px 0 0;
+  overflow: visible;
+}
+
+.confirmation {
+  position: relative;
+  padding: 0 20px 24px;
+  text-align: center;
+}
+
+.scene .title {
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.scene .description {
+  max-width: none;
+  margin: 12px auto 0;
+}
+
+/* Reuse the same underline rule as the invitation's “the wait.” */
+.scene .accent {
+  display: block;
+  width: clamp(110px, 13vw, 190px);
+  height: 12px;
+  margin: 8px auto 0;
+}
+
+.artwork {
+  position: relative;
+  z-index: 5;
+  min-width: 0;
+  min-height: 0;
+  overflow: visible;
+  container-type: size;
+  pointer-events: none;
+}
+
+.receiverPosition {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: min(580px, 40cqw, 128.3018868cqh);
+  transform: translateX(-50%);
+}
+
+@media (min-width: 901px) and (min-height: 600px) {
+  .scene[data-scene="final"] {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .scene[data-scene="final"] {
+    min-height: 500px;
+  }
+
+  .receiverPosition {
+    width: min(540px, 72cqw, 128.3018868cqh);
+  }
+}
+
+@media (max-width: 540px) {
+  .scene[data-scene="final"] {
+    min-height: 440px;
+    padding-top: 24px;
+  }
+
+  .confirmation {
+    padding-inline: 16px;
+    padding-bottom: 22px;
+  }
+
+  .scene .description {
+    max-width: 28ch;
+    text-wrap: balance;
+  }
+
+  .receiverPosition {
+    width: min(540px, 90cqw, 128.3018868cqh);
+  }
+}
+
+@media (max-height: 650px) {
+  .confirmation {
+    padding-bottom: 14px;
+  }
+}

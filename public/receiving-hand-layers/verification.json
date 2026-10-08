@@ -1,0 +1,15 @@
+{
+  "canvas": [
+    1024,
+    1536
+  ],
+  "maxAlphaDifference": 1,
+  "maxRGBDifference": 1,
+  "envelopeBounds": {
+    "x": -360,
+    "y": 0,
+    "width": 1360,
+    "height": 600
+  },
+  "sleeveCropY": 1360
+}

@@ -1,0 +1,47 @@
+.rotor {
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+}
+
+.front,
+.back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.front {
+  position: relative;
+  transform: translateZ(0.1px);
+}
+
+.rotor .back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  transform: rotateY(180deg) translateZ(0.1px);
+}
+
+.rotor .message {
+  margin: 0;
+  font-size: clamp(100px, 18vw, 200px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.rotor .flourish {
+  display: block;
+  width: 120px;
+  height: 12px;
+  margin: 0 0 16px;
+}
+
+.rotor .signature {
+  margin: 0;
+  font-weight: 400;
+}

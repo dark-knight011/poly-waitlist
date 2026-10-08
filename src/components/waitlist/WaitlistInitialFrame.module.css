@@ -1,0 +1,808 @@
+.page {
+  --ink: #25221e;
+  --muted: #716c63;
+  --accent: #ef552b;
+  --paper: #faf7ef;
+  --page-gutter: clamp(10px, 1.8vw, 26px);
+  --serif: "Iowan Old Style", "Palatino Linotype", Baskerville,
+    Georgia, serif;
+  --script: "Segoe Script", "Apple Chancery", cursive;
+
+  min-height: 100svh;
+  padding: var(--page-gutter);
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 50% 20%, #fffdf7, transparent 70%),
+    #f1ede4;
+}
+
+.frame {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(
+    100svh - var(--page-gutter) - var(--page-gutter)
+  );
+  border: 1px solid #b8b1a5;
+  border-top: 7px solid var(--ink);
+  background:
+    radial-gradient(ellipse at 45% 25%, #fffdf780, transparent 65%),
+    #f6f2e9;
+
+  /* Crop decorative sleeves at the frame edge. */
+  overflow: hidden;
+}
+
+.header {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px clamp(20px, 3.5vw, 52px);
+}
+
+.brand {
+  min-width: 0;
+  font-family: var(--script);
+  font-size: clamp(25px, 3.1vw, 43px);
+  font-weight: 400;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.edition {
+  max-width: 30ch;
+  font-family: var(--serif);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.22em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.stage {
+  display: grid;
+  flex: 1;
+  place-items: center;
+  min-width: 0;
+  padding-block: clamp(36px, 5svh, 64px);
+}
+
+.composition {
+  /*
+   * This wrapper defines the card bounds.
+   * Hand positions are measured from these bounds.
+   */
+  position: relative;
+  isolation: isolate;
+  width: min(960px, calc(100% - clamp(120px, 20vw, 280px)));
+
+  --left-hand-width: clamp(300px, 44vw, 650px);
+  --right-hand-width: clamp(380px, 55vw, 800px);
+
+  --left-grip-y: 38%;
+  --right-grip-y: 84px;
+}
+
+.card {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 4vw, 56px);
+  width: 100%;
+  padding: clamp(36px, 4vw, 56px) clamp(36px, 5vw, 72px);
+  border: 1px solid #c9c2b5;
+  border-radius: 4px;
+  background:
+    radial-gradient(ellipse at 20% 0%, #fffdf8, transparent 75%),
+    var(--paper);
+  box-shadow:
+    0 18px 36px rgb(52 42 28 / 10%),
+    0 3px 5px rgb(52 42 28 / 12%);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid #8c8579;
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.letter,
+.signup {
+  position: relative;
+  min-width: 0;
+}
+
+.eyebrow {
+  margin: 0 0 24px;
+  font-family: var(--serif);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.23em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(42px, 4.6vw, 66px);
+  font-weight: 400;
+  line-height: 0.99;
+  letter-spacing: -0.055em;
+}
+
+.underlined {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 9px;
+  font-weight: 400;
+}
+
+.underlined::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: rotate(-2deg);
+}
+
+.description {
+  max-width: 30ch;
+  margin: 24px 0 0;
+  font-family: var(--serif);
+  font-size: clamp(17px, 1.55vw, 21px);
+  line-height: 1.42;
+}
+
+.signature {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 24px;
+  font-family: var(--serif);
+  font-size: 17px;
+  font-style: italic;
+}
+
+.signatureName {
+  font-family: var(--script);
+  font-size: clamp(26px, 2.6vw, 36px);
+  font-style: normal;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: clamp(24px, 3vw, 44px);
+  border-left: 1px solid #a29a8d;
+}
+
+.signupIntro h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(24px, 2.3vw, 32px);
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.signupIntro > p {
+  margin: 8px 0 0;
+  font-family: var(--serif);
+  font-size: clamp(17px, 1.55vw, 21px);
+  line-height: 1.4;
+}
+
+.form {
+  margin-top: clamp(24px, 3vw, 40px);
+}
+
+.label {
+  display: block;
+  margin-bottom: 9px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 54px;
+  padding: 13px 16px;
+  border: 1px solid #827d73;
+  border-radius: 3px;
+  background: rgb(255 255 255 / 26%);
+  color: var(--ink);
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.input::placeholder {
+  color: #78746d;
+  opacity: 1;
+}
+
+.input[aria-invalid="true"] {
+  border-color: #a12f21;
+}
+
+.input:disabled {
+  opacity: 0.75;
+}
+
+.submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 54px;
+  margin-top: 12px;
+  padding: 13px 16px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: var(--accent);
+  color: #201b17;
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.submit > span:last-child {
+  flex: none;
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+}
+
+.submit:disabled {
+  cursor: default;
+  opacity: 0.8;
+}
+
+.input:focus-visible,
+.submit:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
+.helper {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.feedback {
+  min-height: 32px;
+  margin-top: 8px;
+}
+
+.error,
+.status {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.error {
+  color: #972b20;
+}
+
+.status {
+  color: #4d5942;
+}
+
+/*
+ * Both images in a hand pair use the exact same box and transform.
+ * Their only difference is z-index.
+ *
+ * Keep them as siblings of the card: do not put the pair inside
+ * a transformed wrapper that creates its own stacking context.
+ */
+.hand {
+  position: absolute;
+  display: block;
+  height: auto;
+  max-width: none;
+  aspect-ratio: 3 / 2;
+  visibility: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hand[data-ready="true"] {
+  visibility: visible;
+}
+
+.left {
+  width: var(--left-hand-width);
+  left: 0;
+  top: var(--left-grip-y);
+
+  /*
+   * Source anchor: x=1220, y=445.
+   * The shallower grip keeps more of the thumb off the text area.
+   */
+  transform: translate(-79.427083%, -43.457031%);
+  transform-origin: 79.427083% 43.457031%;
+}
+
+.right {
+  width: var(--right-hand-width);
+  left: 100%;
+  top: var(--right-grip-y);
+
+  /* Source anchor: x=500, y=300. */
+  transform: translate(-32.552083%, -29.296875%);
+  transform-origin: 32.552083% 29.296875%;
+}
+
+.rear {
+  z-index: 1;
+}
+
+.front {
+  z-index: 3;
+}
+
+.footer {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin-inline: clamp(20px, 3vw, 44px);
+  padding-block: 16px 20px;
+  border-top: 1px solid #aaa295;
+  font-family: var(--serif);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.footer > span:last-child {
+  font-style: italic;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .submit:hover:not(:disabled) {
+    background: #df4922;
+  }
+}
+
+/* Tablets and phones: one readable column, with both grips retained. */
+@media (max-width: 900px) {
+  .header {
+    padding: 18px 22px;
+  }
+
+  .edition {
+    max-width: 24ch;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+  }
+
+  .stage {
+    padding-block: 30px;
+  }
+
+  .composition {
+    width: min(560px, calc(100% - 64px));
+
+    --left-hand-width: 300px;
+    --right-hand-width: 380px;
+    --left-grip-y: 132px;
+    --right-grip-y: 80px;
+  }
+
+  .card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+    padding: 34px 40px;
+  }
+
+  .eyebrow {
+    margin-bottom: 18px;
+  }
+
+  .title {
+    font-size: clamp(40px, 7.5vw, 54px);
+  }
+
+  .description {
+    max-width: 36ch;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+
+  .signature {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+    margin-top: 14px;
+    font-size: 15px;
+  }
+
+  .signatureName {
+    font-size: 26px;
+  }
+
+  .signup {
+    padding-top: 24px;
+    padding-left: 0;
+    border-top: 1px solid #b8b0a3;
+    border-left: 0;
+  }
+
+  .signupIntro h2 {
+    font-size: 26px;
+  }
+
+  .signupIntro > p {
+    font-size: 17px;
+  }
+
+  .form {
+    margin-top: 22px;
+  }
+}
+
+@media (max-width: 540px) {
+  .frame {
+    border-top-width: 5px;
+  }
+
+  .header {
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .brand {
+    font-size: 25px;
+  }
+
+  .edition {
+    max-width: 19ch;
+    font-size: 8px;
+    letter-spacing: 0.12em;
+  }
+
+  .stage {
+    padding-block: 24px;
+  }
+
+  .composition {
+    width: calc(100% - 32px);
+
+    --left-hand-width: 220px;
+    --right-hand-width: 285px;
+    --left-grip-y: 120px;
+    --right-grip-y: 76px;
+  }
+
+  .card {
+    gap: 20px;
+    padding: 28px;
+  }
+
+  .card::before {
+    inset: 5px;
+  }
+
+  .eyebrow {
+    margin-bottom: 16px;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+  }
+
+  .title {
+    font-size: clamp(35px, 9.8vw, 46px);
+  }
+
+  .description {
+    margin-top: 18px;
+    font-size: 17px;
+    line-height: 1.4;
+  }
+
+  .signature {
+    margin-top: 12px;
+  }
+
+  .signatureName {
+    font-size: 24px;
+  }
+
+  .signup {
+    padding-top: 20px;
+  }
+
+  .signupIntro h2 {
+    font-size: 24px;
+  }
+
+  .signupIntro > p {
+    font-size: 16px;
+  }
+
+  .form {
+    margin-top: 20px;
+  }
+
+  .input,
+  .submit {
+    min-height: 50px;
+  }
+
+  .submit {
+    font-size: 19px;
+  }
+
+  .footer {
+    margin-inline: 16px;
+    padding-block: 14px 16px;
+    font-size: 11px;
+  }
+}
+
+/* Reduce unused space on shorter desktop screens. */
+@media (min-width: 901px) and (max-height: 760px) {
+  .header {
+    padding-block: 14px;
+  }
+
+  .stage {
+    padding-block: 24px;
+  }
+
+  .card {
+    padding-block: 32px;
+  }
+
+  .eyebrow {
+    margin-bottom: 18px;
+  }
+
+  .signature {
+    margin-top: 18px;
+  }
+
+  .footer {
+    padding-block: 12px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .submit {
+    transition: none;
+  }
+}
+
+/* Initial-frame composition corrections */
+
+.page {
+  --script: var(--font-signature), "Segoe Script", cursive;
+}
+
+.brand {
+  font-size: clamp(34px, 3.6vw, 52px);
+  line-height: 1;
+}
+
+.signatureName {
+  font-size: clamp(34px, 3.2vw, 46px);
+  line-height: 1.1;
+}
+
+.signupIntro h2 {
+  /* Avoid the deliberately balanced two-line heading. */
+  text-wrap: wrap;
+}
+
+/*
+ * Desktop: the header and footer occupy their actual heights.
+ * The scene receives all remaining viewport space.
+ */
+@media (min-width: 901px) and (min-height: 600px) {
+  .frame {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    height: calc(
+      100svh - var(--page-gutter) - var(--page-gutter)
+    );
+    min-height: 0;
+  }
+
+  .header {
+    padding-block: 16px;
+  }
+
+  .edition {
+    max-width: none;
+    white-space: nowrap;
+  }
+
+  .stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    min-width: 0;
+    padding-block: clamp(20px, 4svh, 44px);
+  }
+
+  .composition {
+    flex: 0 0 auto;
+    transform: scale(var(--scene-scale, 1));
+    transform-origin: center;
+  }
+}
+
+/* Desktop artwork and card proportions. */
+@media (min-width: 901px) {
+  .composition {
+    /*
+     * Keep the left hand's existing placement.
+     * Reduce and lower the right hand.
+     */
+    --right-hand-width: clamp(360px, 46vw, 660px);
+    --right-grip-y: 140px;
+  }
+
+  .card {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: clamp(28px, 3vw, 40px);
+    padding-inline: clamp(40px, 4.5vw, 64px);
+    padding-block: clamp(30px, 4.5svh, 48px);
+  }
+
+  .signup {
+    padding-left: clamp(24px, 2.2vw, 32px);
+  }
+
+  .signupIntro h2 {
+    font-size: clamp(24px, 2vw, 29px);
+    line-height: 1.2;
+  }
+
+  .signupIntro > p {
+    font-size: clamp(17px, 1.45vw, 21px);
+  }
+
+  .signature {
+    margin-top: 18px;
+  }
+}
+
+/* Tablet: retain the readable stacked card. */
+@media (max-width: 900px) {
+  .composition {
+    --right-hand-width: 320px;
+    --right-grip-y: 100px;
+  }
+
+  .brand {
+    font-size: 38px;
+  }
+
+  .signatureName {
+    font-size: 32px;
+  }
+}
+
+/* Phone: reduce decorative space rather than scaling the form. */
+@media (max-width: 540px) {
+  .header {
+    padding-block: 14px;
+  }
+
+  .brand {
+    font-size: 34px;
+  }
+
+  .stage {
+    padding-block: 18px;
+  }
+
+  .composition {
+    --right-hand-width: 250px;
+    --right-grip-y: 92px;
+  }
+
+  .signatureName {
+    font-size: 29px;
+  }
+
+  .footer {
+    padding-block: 12px;
+  }
+}
+
+/* Compact phones: protect the input and button sizes. */
+@media (max-width: 540px) and (max-height: 780px) {
+  .header {
+    padding-block: 10px;
+  }
+
+  .stage {
+    padding-block: 12px;
+  }
+
+  .card {
+    gap: 16px;
+    padding-block: 23px;
+  }
+
+  .eyebrow {
+    margin-bottom: 12px;
+  }
+
+  .title {
+    font-size: clamp(32px, 8.8vw, 39px);
+  }
+
+  .description {
+    margin-top: 14px;
+    font-size: 16px;
+  }
+
+  .signature {
+    margin-top: 8px;
+  }
+
+  .signup {
+    padding-top: 16px;
+  }
+
+  .signupIntro h2 {
+    font-size: 22px;
+  }
+
+  .signupIntro > p {
+    margin-top: 5px;
+    font-size: 15px;
+  }
+
+  .form {
+    margin-top: 16px;
+  }
+
+  .helper {
+    margin-top: 10px;
+  }
+
+  .footer {
+    padding-block: 10px;
+  }
+}
+
+/* Hide both layers of both hands on phones and tablets. */
+@media (max-width: 900px) {
+  .hand {
+    display: none;
+  }
+}

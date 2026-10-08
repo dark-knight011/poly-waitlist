@@ -1,0 +1,66 @@
+.letter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  aspect-ratio: 1.9;
+  padding: 7% 8%;
+  border: 1px solid #dbceba;
+  border-radius: 12px;
+  background: #fffaf1;
+  box-shadow: 0 10px 24px rgb(59 43 28 / 9%);
+  color: var(--color-ink);
+  opacity: 0;
+  visibility: hidden;
+  transform-origin: center;
+  overflow: hidden;
+}
+.eyebrow {
+  display: block;
+  font-size: clamp(9px, 1.2vw, 11px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #776653;
+}
+.title {
+  display: block;
+  margin-top: 7%;
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3.8vw, 42px);
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+.recipient {
+  margin: 4% 0 0;
+  font-size: 12px;
+  color: #776653;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.signature {
+  display: flex;
+  gap: 8px;
+  margin-top: 7%;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+}
+.star {
+  position: absolute;
+  right: 9%;
+  bottom: 10%;
+  font-size: 30px;
+  color: var(--color-accent);
+}
+@media (max-width: 400px) {
+  .signature {
+    font-size: 13px;
+    margin-top: 5%;
+  }
+  .recipient {
+    font-size: 10px;
+  }
+}
